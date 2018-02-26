@@ -1,0 +1,3 @@
+apples - 2
+banananas - 3
+potato - 5
