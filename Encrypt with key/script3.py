@@ -20,8 +20,7 @@ def encode():
     file.close()
 
 def decode():
-    choice=input("'r' - read from 'hiden.txt' file | 'm' - manual input: ")
-    if choice == "r":
+    try:
         file = open("hiden.txt","r")
         text = file.read()
         file.close()
@@ -36,24 +35,13 @@ def decode():
         for x in delist:
             fulltext = fulltext + x
         print(fulltext)
-    elif choice == "m":
-        text = input("enter crypted text:\n")
-        text = text.split(separate)
-        text.remove("")
-        delist = []
-        for x in text:
-            x = int(x)-key
-            x = chr(x)
-            delist.append(x)
-        fulltext = ""
-        for x in delist:
-            fulltext = fulltext + x
-        print(fulltext)
-    else:
-        print("invalid key")
+    except:
+        print("Wrong key!")
+        again=input("press any key to quit..")
+        quit()
 
 while True:
-    start=input("'e' - encode | 'd' - decode | 'q' - quit: ")
+    start=input("'e' - encode (to hiden.txt) | 'd' - decode (from hiden.txt) | 'q' - quit: ")
     if start == "e":
         encode()
     elif start == "d":
